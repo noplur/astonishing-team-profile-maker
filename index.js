@@ -1,14 +1,11 @@
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
-
-// const Employee = require('./lib/Employee');
-
-// new Employee().getName();
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const employees = []
+
 inquirer.prompt([
     {
     type: "text",
@@ -23,7 +20,7 @@ inquirer.prompt([
     {
     type: "text",
     name: "email",
-    message: "What is the employee's email address?"
+    message: "What is the team employee's email address?"
     },
     {
     type: "text",
@@ -55,28 +52,27 @@ function chooseEmployee () {
           }
     })
 }
-function createEngineer() {
-    
+function createEngineer() {    
 inquirer.prompt([
     {
     type: "text",
     name: "name",
-    message: "What is the team employee's name?"
+    message: "What is the team engineer's name?"
     },
     {
     type: "text",
     name: "id",
-    message: "What is the team employee's ID?"
+    message: "What is the team engineer's ID?"
     },
     {
     type: "text",
     name: "email",
-    message: "What is the employee's email address?"
+    message: "What is the team engineer's email address?"
     },
     {
     type: "text",
     name: "github",
-    message: "What is the engineer's GutHub user name?"
+    message: "What is the team engineer's GutHub user name?"
     },
 ])
 .then((answers) => {
@@ -92,22 +88,22 @@ inquirer.prompt([
     {
     type: "text",
     name: "name",
-    message: "What is the team employee's name?"
+    message: "What is the team intern's name?"
     },
     {
     type: "text",
     name: "id",
-    message: "What is the team employee's ID?"
+    message: "What is the team intern's ID?"
     },
     {
     type: "text",
     name: "email",
-    message: "What is the employee's email address?"
+    message: "What is the team intern's email address?"
     },
     {
     type: "text",
     name: "school",
-    message: "What school does the intern attend?"
+    message: "What school does the team intern attend?"
     },
 ])
 .then((answers) => {
@@ -115,11 +111,11 @@ inquirer.prompt([
     employees.push(intern)
     chooseEmployee();
 })
-}
+};
 
 function generatePage () {
     fs.writeFile(path.join(__dirname,"dist", "team_profile_maker.html"), "hello", "UTF-8", function (err){
         if (err) throw err
-        console.log("file, build")
+        console.log("Page created! Check out team_profile_maker.html in the dist directory to see it!")
     })
-}
+};
