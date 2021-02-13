@@ -5,25 +5,28 @@ const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const employees = []
+const generatePage = require('./src/page-template')
 
-inquirer.prompt([
+function initialQuestions () {
+    inquirer.prompt([
+
     {
-    type: "text",
+    type: "input",
     name: "name",
     message: "What is the team employee's name?"
     },
     {
-    type: "text",
+    type: "number",
     name: "id",
     message: "What is the team employee's ID?"
     },
     {
-    type: "text",
+    type: "input",
     name: "email",
     message: "What is the team employee's email address?"
     },
     {
-    type: "text",
+    type: "number",
     name: "officenumber",
     message: "What is the team manager's office number?"
     },
@@ -33,6 +36,8 @@ inquirer.prompt([
     employees.push(manager)
     chooseEmployee();
 })
+}
+
 
 function chooseEmployee () {
     inquirer.prompt({
@@ -48,29 +53,29 @@ function chooseEmployee () {
           else if (role === "Intern") {
             createIntern();
           } else {
-            generatePage();
+            writeToFile('./dist/team_profile_maker.html', generatePage)
           }
     })
 }
 function createEngineer() {    
 inquirer.prompt([
     {
-    type: "text",
+    type: "input",
     name: "name",
     message: "What is the team engineer's name?"
     },
     {
-    type: "text",
+    type: "number",
     name: "id",
     message: "What is the team engineer's ID?"
     },
     {
-    type: "text",
+    type: "input",
     name: "email",
     message: "What is the team engineer's email address?"
     },
     {
-    type: "text",
+    type: "input",
     name: "github",
     message: "What is the team engineer's GutHub user name?"
     },
@@ -86,22 +91,22 @@ function createIntern() {
     
 inquirer.prompt([
     {
-    type: "text",
+    type: "input",
     name: "name",
     message: "What is the team intern's name?"
     },
     {
-    type: "text",
+    type: "number",
     name: "id",
     message: "What is the team intern's ID?"
     },
     {
-    type: "text",
+    type: "input",
     name: "email",
     message: "What is the team intern's email address?"
     },
     {
-    type: "text",
+    type: "input",
     name: "school",
     message: "What school does the team intern attend?"
     },
@@ -113,9 +118,16 @@ inquirer.prompt([
 })
 };
 
-function generatePage () {
-    fs.writeFile(path.join(__dirname,"dist", "team_profile_maker.html"), "hello", "UTF-8", function (err){
-        if (err) throw err
-        console.log("Page created! Check out team_profile_maker.html in the dist directory to see it!")
-    })
-};
+const writeToFile = (fileName, answers) => {
+    fs.writeFile(fileName, answers(), err => {
+      if (err) throw new Error(err);
+  
+      console.log('Page created! Check out team_profile_maker.html in the dist directory to see it!');
+    })        
+  };
+
+  const init = () => {
+      initialQuestions ()
+      };
+
+init() 
