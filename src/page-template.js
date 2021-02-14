@@ -29,11 +29,11 @@ function renderSchool(school) {
 
 const employeeSection = (employee) => {
 
-    return employee.map(({ name, id, email, officeNumber, github, school }) => {
+    return employee.map(({ name, role, id, email, officeNumber, github, school }) => {
         return `
         <section>
-        <div> Name: ${name}</div>
-        <div> Role: Manager </div>
+        <div> ${name}</div>
+        <div> ${role} </div>
         <div> ID: ${id}</div>
         <div> Email: ${email}</div>
         <div> ${renderOfficeNumber(officeNumber)} </div>
@@ -43,34 +43,6 @@ const employeeSection = (employee) => {
         `
     });
 };
-
-// const engineerSection = (engineer) => {
-//     return engineer.map(({ name, id, email, github }) => {
-//         return `
-//         <section>
-//         <div> Name: ${name}</div>
-//         <div> Role: Engineer </div>
-//         <div> ID: ${id}</div>
-//         <div> Email: ${email}</div>
-//         <div> GitHub: ${github}</div>
-//         </section>
-//         `
-//     });
-// };
-
-// const internSection = (intern) => {
-//     return intern.map(({ name, id, email, school }) => {
-//         return `
-//         <section>
-//         <div> Name: ${name}</div>
-//         <div> Role: Intern </div>
-//         <div> ID: ${id}</div>
-//         <div> Email: ${email}</div>
-//         <div> School: ${school}</div>
-//         </section>
-//         `
-//     });
-// };
 
 const generatePage = (employee) => {
     

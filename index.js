@@ -23,7 +23,6 @@ init();
 
 function initialQuestions () {
     inquirer.prompt([
-
     {
     type: "input",
     name: "name",
@@ -46,12 +45,11 @@ function initialQuestions () {
     },
 ])
 .then((answers) => {
-    const manager = new Manager (answers.name, answers.id, answers.email, answers.officeNumber)
+    const manager = new Manager (answers.role = "Manager", answers.name, answers.id, answers.email, answers.officeNumber)
     employees.push(manager)
     chooseEmployee();
 })
 }
-
 
 function chooseEmployee () {
     inquirer.prompt(
@@ -98,7 +96,7 @@ inquirer.prompt([
     },
 ])
 .then((answers) => {
-    const engineer = new Engineer (answers.name, answers.id, answers.email, answers.github)
+    const engineer = new Engineer (role = "Engineer", answers.name, answers.id, answers.email, answers.github)
     employees.push(engineer)
     chooseEmployee();
 })
@@ -129,21 +127,9 @@ inquirer.prompt([
     },
 ])
 .then((answers) => {
-    const intern = new Intern (answers.name, answers.id, answers.email, answers.school)
+    const intern = new Intern (role = "Intern", answers.name, answers.id, answers.email, answers.school)
     employees.push(intern)
     chooseEmployee();
 })
 };
-
-// const writeToFile = (fileName, answers) => {
-//     fs.writeFile(fileName, answers, err => {
-//       if (err) throw new Error(err);
-  
-//       console.log('Page created! Check out team_profile_maker.html in the dist directory to see it!');
-//     })        
-//   };
-
-//   const init = () => {
-//       initialQuestions ()
-//       };
 
