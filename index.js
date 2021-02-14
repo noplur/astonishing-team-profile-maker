@@ -6,6 +6,7 @@ const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
 const employees = []
 const generatePage = require('./src/page-template')
+const generateCSS = require('./src/style-template')
 
 const writeToFile = (fileName, answers) => {
     fs.writeFile(fileName, answers, err => {
@@ -68,6 +69,7 @@ function chooseEmployee () {
           } else {
             console.log(employees);
             writeToFile('./dist/team_profile_maker.html', generatePage(employees))
+            writeToFile('./dist/style.css', generateCSS())
           }
     })
 }
