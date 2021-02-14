@@ -7,6 +7,20 @@ const Intern = require('./lib/Intern');
 const employees = []
 const generatePage = require('./src/page-template')
 
+const writeToFile = (fileName, answers) => {
+    fs.writeFile(fileName, answers, err => {
+      if (err) throw new Error(err);
+  
+      console.log('Page created! Check out team_profile_maker.html in the dist directory to see it!');
+    })        
+  };
+
+ const init = () => {
+      initialQuestions ()
+      };
+
+init();
+
 function initialQuestions () {
     inquirer.prompt([
 
@@ -27,7 +41,7 @@ function initialQuestions () {
     },
     {
     type: "number",
-    name: "officenumber",
+    name: "officeNumber",
     message: "What is the team manager's office number?"
     },
 ])
@@ -40,7 +54,8 @@ function initialQuestions () {
 
 
 function chooseEmployee () {
-    inquirer.prompt({
+    inquirer.prompt(
+        {
         type: "list",
         name: "role",
         message: "What employee position would you like to add next?",
@@ -53,10 +68,12 @@ function chooseEmployee () {
           else if (role === "Intern") {
             createIntern();
           } else {
-            writeToFile('./dist/team_profile_maker.html', generatePage)
+            console.log(employees);
+            writeToFile('./dist/team_profile_maker.html', generatePage(employees))
           }
     })
 }
+
 function createEngineer() {    
 inquirer.prompt([
     {
@@ -118,16 +135,15 @@ inquirer.prompt([
 })
 };
 
-const writeToFile = (fileName, answers) => {
-    fs.writeFile(fileName, answers(), err => {
-      if (err) throw new Error(err);
+// const writeToFile = (fileName, answers) => {
+//     fs.writeFile(fileName, answers, err => {
+//       if (err) throw new Error(err);
   
-      console.log('Page created! Check out team_profile_maker.html in the dist directory to see it!');
-    })        
-  };
+//       console.log('Page created! Check out team_profile_maker.html in the dist directory to see it!');
+//     })        
+//   };
 
-  const init = () => {
-      initialQuestions ()
-      };
+//   const init = () => {
+//       initialQuestions ()
+//       };
 
-init() 
