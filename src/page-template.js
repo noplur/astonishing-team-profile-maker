@@ -31,7 +31,7 @@ const employeeSection = (employee) => {
 
     return employee.map(({ name, role, id, email, officeNumber, github, school }) => {
         return `
-        <section>
+        
         <div class="card">
         <h5 class="card-title"> ${name}</h5>
         <h5 class="card-subtitle"> ${role} </h5></div>
@@ -42,8 +42,9 @@ const employeeSection = (employee) => {
             ${ renderGithub(github)}
             ${renderSchool(school)}
         </ul>
-        </section>`;
-    });
+       `;
+    })
+    .join('')
 };
 
 const generatePage = (employee) => {
@@ -66,7 +67,7 @@ const generatePage = (employee) => {
     
     <body>
     <main>
-    ${employeeSection(employee)}
+    <section>${employeeSection(employee)}</section>
     
     </main>
     
