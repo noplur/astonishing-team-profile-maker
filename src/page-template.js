@@ -27,21 +27,38 @@ function renderSchool(school) {
     }
 }
 
-const employeeSection = (employee) => {
+function renderIcon(role) {
+    if (role === "Manager") {
+        return `<i class="fas fa-mug-hot"></i>`
+    }
+    if (role === "Engineer") {
+        return `<i class="fas fa-glasses"></i>`
+    } else {
+        return `<i class="fas fa-user-graduate"></i>`
+    }
+}
 
+
+const employeeSection = (employee) => {
+    
     return employee.map(({ name, role, id, email, officeNumber, github, school }) => {
         return `
         
-        <div class="card">
-        <h5 class="card-title"> ${name}</h5>
-        <h5 class="card-subtitle"> ${role} </h5></div>
-        <ul class="list-group">
+        
+        
+        
+        <div class="shadow col-12 col-md-3 employee rounded">
+        <h5 class="card-title bg-primary title"> ${name}</h5>
+        <h5 class="card-subtitle bg-primary subtitle"> ${renderIcon(role) }  ${role} </h5>
+        <ul class="list-group border bg-light">
             <li class="list-group-item"> ID: ${id}</li>
             <li class="list-group-item"> Email: <a href="mailto:${email}">${email}</a></li>
             ${renderOfficeNumber(officeNumber)}
             ${ renderGithub(github)}
             ${renderSchool(school)}
         </ul>
+        </div>
+        
        `;
     })
     .join('')
@@ -67,9 +84,18 @@ const generatePage = (employee) => {
     
     <body>
     <main>
-    <section>${employeeSection(employee)}</section>
+    
+    <section>
+    <div class="row row-cols-2 row-cols-md-3 d-flex justify-content-center">
+    ${employeeSection(employee)}
+    </div>
+    </section>
     
     </main>
+
+    <footer>
+    <section class="footer"></section>
+    </footer>
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </body>
