@@ -13,7 +13,7 @@ function renderOfficeNumber(officeNumber) {
 
 function renderGithub(github) {
     if (github) {
-        return `<li class="list-group-item">GitHub: <a href="https://github.com/${github}/portfolio" target=_blank>${github}</a></li>`
+        return `<li class="list-group-item">GitHub: <a href="https://github.com/${github}" target=_blank>${github}</a></li>`
     } else {
         return '<li class="d-none">GitHub:</li>'
     }
@@ -67,6 +67,8 @@ const generatePage = (employee) => {
     <!DOCTYPE html>
     <html lang="en">
 
+    <!-- start of head section -->
+
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,22 +79,41 @@ const generatePage = (employee) => {
     <title>Astonishing Team Profile Maker</title>
     </head>
 
+    <!-- end of head section -->
+
+    <!-- start of intro section -->
+
     <section class="intro">My Astonishing Team</section>
+
+    <!-- end of intro section -->
     
     <body>
+
+    <!-- start of main section -->
+
     <main>
+
+    <!-- start of employee section function -->
     
     <section>
     <div class="row row-cols-2 row-cols-md-3 d-flex justify-content-center">
     ${employeeSection(employee)}
     </div>
     </section>
+
+    <!-- end of employee section function -->
     
     </main>
+
+    <!-- end of main section -->
+
+    <!-- start of footer section -->
 
     <footer>
     <section class="footer"></section>
     </footer>
+
+    <!-- end of footer section -->
     
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     </body>
