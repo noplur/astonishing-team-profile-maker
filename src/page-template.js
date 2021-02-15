@@ -44,9 +44,6 @@ const employeeSection = (employee) => {
     return employee.map(({ name, role, id, email, officeNumber, github, school }) => {
         return `
         
-        
-        
-        
         <div class="shadow col-12 col-md-3 employee rounded">
         <h5 class="card-title bg-primary title"> ${name}</h5>
         <h5 class="card-subtitle bg-primary subtitle"> ${renderIcon(role) }  ${role} </h5>
