@@ -1,3 +1,5 @@
+// global constructors
+
 const fs = require('fs');
 const path = require('path');
 const inquirer = require('inquirer');
@@ -8,6 +10,8 @@ const employees = []
 const generatePage = require('./src/page-template')
 const generateCSS = require('./src/style-template')
 
+// function to write HTML/CSS files
+
 const writeToFile = (fileName, answers) => {
     fs.writeFile(fileName, answers, err => {
       if (err) throw new Error(err);
@@ -16,11 +20,18 @@ const writeToFile = (fileName, answers) => {
     })        
   };
 
+// function to initialize app
+
  const init = () => {
       initialQuestions ()
       };
 
+// Function call to initialize app
+
 init();
+
+
+// function for initial questions for user input
 
 function initialQuestions () {
     inquirer.prompt([
@@ -52,6 +63,8 @@ function initialQuestions () {
 })
 }
 
+// function to choose next employee role (engineer, inter, or finish/create HTML and CSS)
+
 function chooseEmployee () {
     inquirer.prompt(
         {
@@ -73,6 +86,8 @@ function chooseEmployee () {
           }
     })
 }
+
+// function for next engineer employee
 
 function createEngineer() {    
 inquirer.prompt([
@@ -103,6 +118,8 @@ inquirer.prompt([
     chooseEmployee();
 })
 }
+
+// function for next intern employee
 
 function createIntern() {
     

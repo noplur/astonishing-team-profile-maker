@@ -9,5 +9,5 @@
 
 ### The Astonishing Team Profile Maker walkthrough video can be viewed here: https://drive.google.com/file/d/1mGPrY8pldhhUktmFdzhpY84EYRzORxQV/view
 
-### Here is a screenshots of a sample Team Profile Maker using the The Astonishing Team Profile Maker:
+### Here is a screenshot of a sample Team Profile Maker using the The Astonishing Team Profile Maker:
 ### ![](./images/my_team_maker.jpg)

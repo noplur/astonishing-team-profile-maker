@@ -1,7 +1,12 @@
+// global constructors
+
 const Employee = require("../lib/Employee");
 const inquirer = require('inquirer');
 const fs = require('fs');
 const employees = []
+
+// function to return an employee office number
+// if there is no office number, return empty
 
 function renderOfficeNumber(officeNumber) {
     if (officeNumber) {
@@ -11,6 +16,9 @@ function renderOfficeNumber(officeNumber) {
     }
 }
 
+// function to return a GitHub user name
+// if there is no GitHub user name, return empty
+
 function renderGithub(github) {
     if (github) {
         return `<li class="list-group-item">GitHub: <a href="https://github.com/${github}" target=_blank>${github}</a></li>`
@@ -19,6 +27,9 @@ function renderGithub(github) {
     }
 }
 
+// function to return a school
+// if there is no school, return empty
+
 function renderSchool(school) {
     if (school) {
         return `<li class="list-group-item">School: ${school}</li>`
@@ -26,6 +37,8 @@ function renderSchool(school) {
         return '<li class="d-none">School: ${school}</li>'
     }
 }
+
+// function to return an icon based on role
 
 function renderIcon(role) {
     if (role === "Manager") {
@@ -38,6 +51,7 @@ function renderIcon(role) {
     }
 }
 
+// function to generate employee section
 
 const employeeSection = (employee) => {
     
@@ -60,6 +74,8 @@ const employeeSection = (employee) => {
     })
     .join('')
 };
+
+// function to generate HTML page
 
 const generatePage = (employee) => {
     
